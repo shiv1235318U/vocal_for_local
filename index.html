@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atmanirbhar Store | Vocal for Local</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <h1><i class="fas fa-hands-helping"></i> <span id="logoText">Atmanirbhar Store</span></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#profession">Professions</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <!-- Mobile auth links -->
+        <li class="mobile-auth">
+          <a href="#" onclick="openPanel('loginPanel')">Login</a>
+        </li>
+        <li class="mobile-auth">
+          <a href="#" onclick="openPanel('registerPanel')">Register</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button id="loginBtn" class="btn-auth">Login</button>
+      <button id="registerBtn" class="btn-auth btn-register">Register</button>
+      <div id="userMenu" class="user-menu" style="display: none;">
+        <span class="user-avatar">🙍🏻‍♂️</span>
+        <span id="userName">User</span>
+        <div class="user-dropdown">
+          <a href="#" id="profileBtn">Profile</a>
+          <a href="#" id="logoutBtn">Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h2>Support Local, Grow Local <span class="india-flag">🇮🇳</span></h2>
+    <p>Discover authentic Indian handmade and organic products directly from artisans and small businesses.</p>
+    <div class="hero-buttons">
+      <button id="exploreBtn" class="btn-primary">Explore Products</button>
+      <button id="exploreProfessions" class="btn-secondary">Find Professionals</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Indian Artisans">
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2>Why Choose Atmanirbhar Store?</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <i class="fas fa-hands"></i>
+        <h3>Direct from Artisans</h3>
+        <p>Buy directly from skilled artisans and support their livelihood</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-leaf"></i>
+        <h3>Eco-Friendly</h3>
+        <p>All our products are sustainable and environmentally friendly</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-rupee-sign"></i>
+        <h3>Fair Pricing</h3>
+        <p>Artisans receive fair compensation for their craftsmanship</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-shipping-fast"></i>
+        <h3>Pan-India Delivery</h3>
+        <p>We deliver across India with secure packaging</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <h2>Our Local Products</h2>
+    <p class="section-subtitle">Handpicked authentic products from across India</p>
+    <div class="product-grid">
+      <div class="product">
+        <div class="product-image">
+          <img src="https://images.squarespace-cdn.com/content/v1/64ff1596bf78f9494792a3d3/1707124170673-A5Y42DXZ0GQHH47KUYCK/1100x1100.jpeg" alt="Clay Pottery">
+          <div class="product-overlay">
+            <button class="btn-overlay" data-panel="slidePottery">View Collection</button>
+          </div>
+        </div>
+        <h3>Clay Pottery</h3>
+        <p>Handmade earthen pots from local artisans.</p>
+        <div class="product-footer">
+          <span class="price">From ₹299</span>
+          <button class="btn-buy" data-panel="slidePottery">Buy Now</button>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-image">
+          <img src="https://www.ksgindia.com/images/blog/19%20JUNE%202023/17%20JULY%202023/SS16.png" alt="Craft Products">
+          <div class="product-overlay">
+            <button class="btn-overlay" data-panel="slideArtisan">View Collection</button>
+          </div>
+        </div>
+        <h3>Artisan Craft Collective</h3>
+        <p>Beautiful handwoven products made by rural artisans.</p>
+        <div class="product-footer">
+          <span class="price">From ₹499</span>
+          <button class="btn-buy" data-panel="slideArtisan">Buy Now</button>
+        </div>
+      </div>
+      <div class="product">
+        <div class="product-image">
+          <img src="https://content.jdmagicbox.com/comp/def_content/indian-restaurants/indian-restaurants8-indian-restaurants-6-0zj3n.jpg" alt="Local Foods">
+          <div class="product-overlay">
+            <button class="btn-overlay" data-panel="slideLocalTaste">View Collection</button>
+          </div>
+        </div>
+        <h3>Local Taste of India</h3>
+        <p>From farms and kitchens across India — pure, local taste.</p>
+        <div class="product-footer">
+          <span class="price">From ₹199</span>
+          <button class="btn-buy" data-panel="slideLocalTaste">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="professions" id="profession">
+  <div class="container">
+    <h2>Our Local Professionals</h2>
+    <p class="section-subtitle">Skilled professionals ready to serve you</p>
+    <div class="profession-grid">
+      <div class="profession">
+        <div class="profession-image">
+          <img src="https://media.istockphoto.com/id/508449768/photo/painter-painting-with-paint-roller.jpg?s=612x612&w=0&k=20&c=m-vuBg8Tx0yMT4j1nTeUnd6MK8ivb9TKgqW2D3akPkE=" alt="Painters">
+        </div>
+        <h3>Painters</h3>
+        <p>Precision. Passion. Painted to perfection make the walls that speak up.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>4.5 (120 reviews)</span>
+        </div>
+        <button class="btn-hire" data-panel="paintersPanel">Hire Now</button>
+      </div>
+      <div class="profession">
+        <div class="profession-image">
+          <img src="https://belloscleaning.com/wp-content/uploads/2020/12/a-Professional-House-Cleaner.jpg" alt="Household Work">
+        </div>
+        <h3>Household Work</h3>
+        <p>Power-packed cleaning, every time.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0 (89 reviews)</span>
+        </div>
+        <button class="btn-hire" data-panel="householdPanel">Hire Now</button>
+      </div>
+      <div class="profession">
+        <div class="profession-image">
+          <img src="https://studyplex.org/blog/wp-content/uploads/2022/07/Difference-Between-Cook-_-Chef-1.webp" alt="Chef">
+        </div>
+        <h3>Chef</h3>
+        <p>Flavors that feel like home.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0 (67 reviews)</span>
+        </div>
+        <button class="btn-hire" data-panel="chefPanel">Hire Now</button>
+      </div>
+      <div class="profession">
+        <div class="profession-image">
+          <img src="https://parsonsjoinery.com/wp-content/uploads/2016/09/The-difference-between-a-joiner-and-a-carpenter-1.jpg" alt="Carpenter">
+        </div>
+        <h3>Carpenter</h3>
+        <p>Built to last, crafted with care.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>4.5 (156 reviews)</span>
+        </div>
+        <button class="btn-hire" data-panel="carpenterPanel">Hire Now</button>
+      </div>
+      <div class="profession">
+        <div class="profession-image">
+          <img src="https://chamblissplumbing.com/wp-content/uploads/2023/03/whats-a-plumber-1.jpg" alt="Plumber">
+        </div>
+        <h3>Plumber</h3>
+        <p>Your pipes, our promise.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0 (203 reviews)</span>
+        </div>
+        <button class="btn-hire" data-panel="plumberPanel">Hire Now</button>
+      </div>
+      <div class="profession">
+        <div class="profession-image">
+          <img src="https://airtasker-seo-assets-prod.s3.amazonaws.com/en_GB/1724836855863-alterations-vs-tailoring.jpg" alt="Tailor">
+        </div>
+        <h3>Tailor</h3>
+        <p>Crafted for comfort. Designed for you.</p>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>4.5 (98 reviews)</span>
+        </div>
+        <button class="btn-hire" data-panel="tailorPanel">Hire Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <h2>About Atmanirbhar Store</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Atmanirbhar Store is an initiative to promote India's local talent and products. We connect you directly to artisans, farmers, and small businesses across the country.</p>
+        <p>Every purchase you make supports a self-reliant India and helps preserve traditional crafts and skills that have been passed down through generations.</p>
+        <div class="stats">
+          <div class="stat">
+            <h3>500+</h3>
+            <p>Local Artisans</p>
+          </div>
+          <div class="stat">
+            <h3>1000+</h3>
+            <p>Products</p>
+          </div>
+          <div class="stat">
+            <h3>50+</h3>
+            <p>Cities</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Indian Artisan">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p class="section-subtitle">Get in touch with us for any queries</p>
+    <div class="contact-content">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h3>Address</h3>
+            <p>123 Local Market, New Delhi, India - 110001</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h3>Phone</h3>
+            <p>+91 98765 43210</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h3>Email</h3>
+            <p>info@atmanirbharstore.com</p>
+          </div>
+        </div>
+      </div>
+      <form id="contactForm" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Your Phone" />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button class="btn-send" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><i class="fas fa-hands-helping"></i> Atmanirbhar Store</h3>
+        <p>Supporting local artisans and professionals across India.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#profession">Professionals</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Handicrafts</a></li>
+          <li><a href="#">Organic Food</a></li>
+          <li><a href="#">Home Services</a></li>
+          <li><a href="#">Textiles</a></li>
+          <li><a href="#">Pottery</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe to get updates on new products and offers</p>
+        
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Atmanirbhar Store | Made with ❤️ in India</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Login Panel -->
+<div class="slide-panel auth-panel" id="loginPanel">
+  <button class="close-btn" onclick="closePanel('loginPanel')">×</button>
+  <h2>Login to Your Account</h2>
+  <form id="loginForm" class="auth-form">
+    <div class="form-group">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter your password" required>
+    </div>
+    <button type="submit" class="btn-auth-submit">Login</button>
+    <div class="auth-links">
+      <p>Don't have an account? <a href="#" onclick="closePanel('loginPanel'); openPanel('registerPanel');">Register here</a></p>
+    </div>
+  </form>
+</div>
+
+<!-- Register Panel -->
+<div class="slide-panel auth-panel" id="registerPanel">
+  <button class="close-btn" onclick="closePanel('registerPanel')">×</button>
+  <h2>Create New Account</h2>
+  <form id="registerForm" class="auth-form">
+    <div class="form-group">
+      <label for="registerName">Full Name</label>
+      <input type="text" id="registerName" placeholder="Enter your full name" required>
+    </div>
+    <div class="form-group">
+      <label for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label for="registerPhone">Phone Number</label>
+      <input type="tel" id="registerPhone" placeholder="Enter your phone number" required>
+    </div>
+    <div class="form-group">
+      <label for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" placeholder="Create a password" required>
+    </div>
+    <div class="form-group">
+      <label for="registerConfirmPassword">Confirm Password</label>
+      <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" required>
+    </div>
+    <button type="submit" class="btn-auth-submit">Create Account</button>
+    <div class="auth-links">
+      <p>Already have an account? <a href="#" onclick="closePanel('registerPanel'); openPanel('loginPanel');">Login here</a></p>
+    </div>
+  </form>
+</div>
+
+<!-- Profile Panel -->
+<div class="slide-panel auth-panel" id="profilePanel">
+  <button class="close-btn" onclick="closePanel('profilePanel')">×</button>
+  <h2>Your Profile</h2>
+  <div id="profileContent" class="profile-content">
+    <!-- Profile content will be loaded here -->
+  </div>
+</div>
+
+<!-- Delivery Address Panel -->
+<div class="slide-panel" id="deliveryAddressPanel">
+  <button class="close-btn" onclick="closePanel('deliveryAddressPanel')">×</button>
+  <h2>Delivery Address</h2>
+  <div id="deliveryAddressContent" class="address-content">
+    <!-- Delivery address form will be loaded here -->
+  </div>
+</div>
+
+<!-- Hiring Address Panel -->
+<div class="slide-panel" id="hiringAddressPanel">
+  <button class="close-btn" onclick="closePanel('hiringAddressPanel')">×</button>
+  <h2>Hiring Address</h2>
+  <div id="hiringAddressContent" class="address-content">
+    <!-- Hiring address form will be loaded here -->
+  </div>
+</div>
+
+<!-- Slide Panels for Products -->
+<div class="slide-panel" id="slidePottery">
+  <button class="close-btn" onclick="closePanel('slidePottery')">×</button>
+  <h2>Clay Pottery Collection</h2>
+  <div class="product-item" data-subslide="vaseModal">
+    <img src="https://m.media-amazon.com/images/I/61hu+uVVvJL._UF894,1000_QL80_.jpg" alt="Handmade Vase">
+    <h3>Handmade Vase</h3>
+    <p>Beautifully crafted earthen vase for home decor.</p>
+    <span class="price">₹499</span>
+  </div>
+  <div class="product-item" data-subslide="bowlModal">
+    <img src="https://i.etsystatic.com/11493970/r/il/ae894e/2469064208/il_570xN.2469064208_tm4v.jpg" alt="Decorative Bowl">
+    <h3>Decorative Bowl</h3>
+    <p>Perfect for gifting or dining table decoration.</p>
+    <span class="price">₹349</span>
+  </div>
+</div>
+
+<div class="slide-panel" id="slideArtisan">
+  <button class="close-btn" onclick="closePanel('slideArtisan')">×</button>
+  <h2>Artisan Craft Collective</h2>
+  <div class="product-item" data-subslide="scarfModal">
+    <img src="https://image.hm.com/assets/hm/d3/37/d33773290274516233a51c411fc0a0d12b68818c.jpg" alt="Handwoven Scarf">
+    <h3>Handwoven Scarf</h3>
+    <p>Soft scarves made by rural artisans using traditional techniques.</p>
+    <span class="price">₹799</span>
+  </div>
+  <div class="product-item" data-subslide="bagModal">
+    <img src="https://m.media-amazon.com/images/I/71EXupWBD8L._SX522_.jpg" alt="Artisan Bag">
+    <h3>Artisan Bag</h3>
+    <p>Stylish bags crafted from natural fibers.</p>
+    <span class="price">₹1299</span>
+  </div>
+</div>
+
+<div class="slide-panel" id="slideLocalTaste">
+  <button class="close-btn" onclick="closePanel('slideLocalTaste')">×</button>
+  <h2>Village-to-Table Market</h2>
+  <div class="product-item" data-subslide="milletModal">
+    <img src="https://happyharvestfarms.com/blog/wp-content/uploads/2023/12/millet.jpg" alt="Organic Millets">
+    <h3>Organic Millets</h3>
+    <p>Healthy millets directly from local farmers.</p>
+    <span class="price">₹199/kg</span>
+  </div>
+  <div class="product-item" data-subslide="pickleModal">
+    <img src="https://vegecravings.com/wp-content/uploads/2016/12/mango-pickle-recipe-step-by-step-instructions-7.jpg" alt="Local Honey">
+    <h3>Homemade Pickles</h3>
+    <p>Tasty, tempting and organic pickles</p>
+    <span class="price">₹299</span>
+  </div>
+</div>
+
+<!-- Sub-slide Panels for Products -->
+<div class="slide-panel sub-slide" id="vaseModal">
+  <button class="close-btn" onclick="closePanel('vaseModal')">×</button>
+  <h2>Vase Collection</h2>
+  <div class="variant-card">
+    <img src="https://m.media-amazon.com/images/I/61hu+uVVvJL._UF894,1000_QL80_.jpg" alt="Vase 1">
+    <h3>Traditional Vase</h3>
+    <p>Handcrafted with traditional motifs</p>
+    <button onclick="addToCart({id: 'vase1', name: 'Traditional Vase', price: 499})">Add to Cart</button>
+  </div>
+  <div class="variant-card">
+    <img src="https://m.media-amazon.com/images/I/61aCB42rsFL.jpg" alt="Vase 2">
+    <h3>Modern Vase</h3>
+    <p>Contemporary design with traditional craftsmanship</p>
+    <button onclick="addToCart({id: 'vase2', name: 'Modern Vase', price: 699})">Add to Cart</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="bowlModal">
+  <button class="close-btn" onclick="closePanel('bowlModal')">×</button>
+  <h2>Bowl Collection</h2>
+  <div class="variant-card">
+    <img src="https://i.etsystatic.com/11493970/r/il/ae894e/2469064208/il_570xN.2469064208_tm4v.jpg" alt="Bowl 1">
+    <h3>Decorative Bowl Set</h3>
+    <p>Set of 3 decorative bowls</p>
+    <button onclick="addToCart({id: 'bowl1', name: 'Decorative Bowl Set', price: 349})">Add to Cart</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="scarfModal">
+  <button class="close-btn" onclick="closePanel('scarfModal')">×</button>
+  <h2>Scarf Collection</h2>
+  <div class="variant-card">
+    <img src="https://image.hm.com/assets/hm/d3/37/d33773290274516233a51c411fc0a0d12b68818c.jpg" alt="Scarf 1">
+    <h3>Silk Scarf</h3>
+    <p>Handwoven silk scarf with traditional patterns</p>
+    <button onclick="addToCart({id: 'scarf1', name: 'Silk Scarf', price: 799})">Add to Cart</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="bagModal">
+  <button class="close-btn" onclick="closePanel('bagModal')">×</button>
+  <h2>Bag Collection</h2>
+  <div class="variant-card">
+    <img src="https://m.media-amazon.com/images/I/71EXupWBD8L._SX522_.jpg" alt="Bag 1">
+    <h3>Jute Tote Bag</h3>
+    <p>Eco-friendly jute bag with hand embroidery</p>
+    <button onclick="addToCart({id: 'bag1', name: 'Jute Tote Bag', price: 1299})">Add to Cart</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="milletModal">
+  <button class="close-btn" onclick="closePanel('milletModal')">×</button>
+  <h2>Millet Collection</h2>
+  <div class="variant-card">
+    <img src="https://happyharvestfarms.com/blog/wp-content/uploads/2023/12/millet.jpg" alt="Millet 1">
+    <h3>Foxtail Millet</h3>
+    <p>Organic foxtail millet, rich in fiber</p>
+    <button onclick="addToCart({id: 'millet1', name: 'Foxtail Millet (1kg)', price: 199})">Add to Cart</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="pickleModal">
+  <button class="close-btn" onclick="closePanel('pickleModal')">×</button>
+  <h2>Pickle Collection</h2>
+  <div class="variant-card">
+    <img src="https://vegecravings.com/wp-content/uploads/2016/12/mango-pickle-recipe-step-by-step-instructions-7.jpg" alt="Pickle 1">
+    <h3>Mango Pickle</h3>
+    <p>Traditional spicy mango pickle</p>
+    <button onclick="addToCart({id: 'pickle1', name: 'Mango Pickle (500g)', price: 299})">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Professional Sub-slide Panels -->
+<div class="slide-panel sub-slide" id="paintersPanel">
+  <button class="close-btn" onclick="closePanel('paintersPanel')">×</button>
+  <h2>Available Painters</h2>
+  
+  <div class="professional-card">
+    <div class="professional-header">
+      <div class="professional-image">
+        <img src="https://images.unsplash.com/photo-1531339413195-cc6c17163974?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Rajesh Kumar">
+      </div>
+      <div class="professional-info">
+        <h3>Rajesh Kumar</h3>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>4.5 (87 reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="professional-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>South Delhi</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-clock"></i>
+        <span>Available: Mon-Sat, 9AM-6PM</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+91 98765 43210</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Starting from ₹1500/day</span>
+      </div>
+    </div>
+    <p class="professional-bio">With over 8 years of experience, I specialize in interior and exterior painting with a focus on quality and attention to detail.</p>
+    <button class="btn-contact" onclick="hireProfessional({id: 'painter1', name: 'Rajesh Kumar', profession: 'Painter', price: 1500, phone: '+91 98765 43210', image: 'https://randomuser.me/api/portraits/men/32.jpg'})">Hire Now</button>
+  </div>
+  
+  <div class="professional-card">
+    <div class="professional-header">
+      <div class="professional-image">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Amit Sharma">
+      </div>
+      <div class="professional-info">
+        <h3>Amit Sharma</h3>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0 (64 reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="professional-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>West Delhi</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-clock"></i>
+        <span>Available: Tue-Sun, 8AM-7PM</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+91 87654 32109</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Starting from ₹1800/day</span>
+      </div>
+    </div>
+    <p class="professional-bio">Specializing in decorative and textured painting with 12 years of experience. I provide free color consultation.</p>
+    <button class="btn-contact" onclick="hireProfessional({id: 'painter2', name: 'Amit Sharma', profession: 'Painter', price: 1800, phone: '+91 87654 32109', image: 'https://randomuser.me/api/portraits/men/45.jpg'})">Hire Now</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="householdPanel">
+  <button class="close-btn" onclick="closePanel('householdPanel')">×</button>
+  <h2>Available Household Workers</h2>
+  
+  <div class="professional-card">
+    <div class="professional-header">
+      <div class="professional-image">
+        <img src="https://images.unsplash.com/photo-1463335361701-e90f4c5045d0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387" alt="Priya Singh">
+      </div>
+      <div class="professional-info">
+        <h3>Priya Singh</h3>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0 (42 reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="professional-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>East Delhi</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-clock"></i>
+        <span>Available: Mon-Sat, 8AM-5PM</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+91 76543 21098</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Starting from ₹800/day</span>
+      </div>
+    </div>
+    <p class="professional-bio">Professional cleaning services with 6 years of experience. Specialized in deep cleaning and organization.</p>
+    <button class="btn-contact" onclick="hireProfessional({id: 'household1', name: 'Priya Singh', profession: 'Household Worker', price: 800, phone: '+91 76543 21098', image: 'https://randomuser.me/api/portraits/women/33.jpg'})">Hire Now</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="chefPanel">
+  <button class="close-btn" onclick="closePanel('chefPanel')">×</button>
+  <h2>Available Chefs</h2>
+  
+  <div class="professional-card">
+    <div class="professional-header">
+      <div class="professional-image">
+        <img src="https://plus.unsplash.com/premium_photo-1689977871600-e755257fb5f8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="Vikram Mehta">
+      </div>
+      <div class="professional-info">
+        <h3>Vikram Mehta</h3>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0 (38 reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="professional-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Central Delhi</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-clock"></i>
+        <span>Available: All days, 10AM-10PM</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+91 65432 10987</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Starting from ₹2500/event</span>
+      </div>
+    </div>
+    <p class="professional-bio">Professional chef with 10 years of experience in North Indian and Continental cuisine. Specializing in home catering for events.</p>
+    <button class="btn-contact" onclick="hireProfessional({id: 'chef1', name: 'Vikram Mehta', profession: 'Chef', price: 2500, phone: '+91 65432 10987', image: 'https://randomuser.me/api/portraits/men/22.jpg'})">Hire Now</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="carpenterPanel">
+  <button class="close-btn" onclick="closePanel('carpenterPanel')">×</button>
+  <h2>Available Carpenters</h2>
+  
+  <div class="professional-card">
+    <div class="professional-header">
+      <div class="professional-image">
+        <img src="https://images.unsplash.com/photo-1638368349569-e49499196d9f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Ramesh Patel">
+      </div>
+      <div class="professional-info">
+        <h3>Ramesh Patel</h3>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>4.5 (76 reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="professional-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>North Delhi</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-clock"></i>
+        <span>Available: Mon-Sat, 9AM-6PM</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+91 54321 09876</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Starting from ₹1200/day</span>
+      </div>
+    </div>
+    <p class="professional-bio">Experienced carpenter with 15 years in furniture making and repair. Specialized in custom woodwork and restoration.</p>
+    <button class="btn-contact" onclick="hireProfessional({id: 'carpenter1', name: 'Ramesh Patel', profession: 'Carpenter', price: 1200, phone: '+91 54321 09876', image: 'https://randomuser.me/api/portraits/men/55.jpg'})">Hire Now</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="plumberPanel">
+  <button class="close-btn" onclick="closePanel('plumberPanel')">×</button>
+  <h2>Available Plumbers</h2>
+  
+  <div class="professional-card">
+    <div class="professional-header">
+      <div class="professional-image">
+        <img src="https://images.unsplash.com/photo-1609252285236-93406ce15b0d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870" alt="Sanjay Gupta">
+      </div>
+      <div class="professional-info">
+        <h3>Sanjay Gupta</h3>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>5.0 (112 reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="professional-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>All Delhi Areas</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-clock"></i>
+        <span>Available: 24/7 Emergency Service</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+91 43210 98765</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Starting from ₹500/service</span>
+      </div>
+    </div>
+    <p class="professional-bio">Licensed plumber with 12 years of experience. Specializing in pipe repair, installation, and emergency plumbing services.</p>
+    <button class="btn-contact" onclick="hireProfessional({id: 'plumber1', name: 'Sanjay Gupta', profession: 'Plumber', price: 500, phone: '+91 43210 98765', image: 'https://randomuser.me/api/portraits/men/67.jpg'})">Hire Now</button>
+  </div>
+</div>
+
+<div class="slide-panel sub-slide" id="tailorPanel">
+  <button class="close-btn" onclick="closePanel('tailorPanel')">×</button>
+  <h2>Available Tailors</h2>
+  
+  <div class="professional-card">
+    <div class="professional-header">
+      <div class="professional-image">
+        <img src="https://images.unsplash.com/photo-1624354865912-fdf2f0e09a21?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=763" alt="Meena Devi">
+      </div>
+      <div class="professional-info">
+        <h3>Meena Devi</h3>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>4.5 (53 reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="professional-details">
+      <div class="detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>South Delhi</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-clock"></i>
+        <span>Available: Mon-Sat, 10AM-7PM</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+91 32109 87654</span>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-rupee-sign"></i>
+        <span>Starting from ₹300/garment</span>
+      </div>
+    </div>
+    <p class="professional-bio">Master tailor with 20 years of experience in traditional and modern clothing. Specialized in custom fitting and alterations.</p>
+    <button class="btn-contact" onclick="hireProfessional({id: 'tailor1', name: 'Meena Devi', profession: 'Tailor', price: 300, phone: '+91 32109 87654', image: 'https://randomuser.me/api/portraits/women/44.jpg'})">Hire Now</button>
+  </div>
+</div>
+
+<!-- Cart Panel -->
+<div class="slide-panel cart-panel" id="cartPanel">
+  <button class="close-btn" onclick="closePanel('cartPanel')">×</button>
+  <h2>Your Cart</h2>
+  <div id="cartItems"></div>
+  <div class="cart-total">
+    <h3>Total: ₹<span id="cartTotal">0</span></h3>
+  </div>
+  <div class="cart-actions">
+    <button class="btn-continue" onclick="closePanel('cartPanel')">Continue Shopping</button>
+    <button class="btn-checkout" onclick="proceedToPayment()">Proceed to Payment</button>
+    <button class="btn-clear" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+
+<!-- Hire Panel -->
+<div class="slide-panel hire-panel" id="hirePanel">
+  <button class="close-btn" onclick="closePanel('hirePanel')">×</button>
+  <h2>Your Hired Professionals</h2>
+  <div id="hireItems"></div>
+  <div class="hire-total">
+    <h3>Total: ₹<span id="hireTotal">0</span></h3>
+  </div>
+  <div class="hire-actions">
+    <button class="btn-continue" onclick="closePanel('hirePanel')">Continue Browsing</button>
+    <button class="btn-checkout" onclick="proceedToHirePayment()">Pay for Services</button>
+    <button class="btn-clear" onclick="clearHires()">Clear All</button>
+  </div>
+</div>
+
+<!-- Orders History Panel -->
+<div class="slide-panel orders-panel" id="ordersPanel">
+  <button class="close-btn" onclick="closePanel('ordersPanel')">×</button>
+  <h2>Your Order History</h2>
+  <div id="ordersItems"></div>
+  <div class="orders-actions">
+    <button class="btn-continue" onclick="closePanel('ordersPanel')">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- Hire Payment Panel -->
+<div class="slide-panel" id="hirePaymentPanel">
+  <button class="close-btn" onclick="closePanel('hirePaymentPanel')">×</button>
+  <h2>Payment for Services</h2>
+  <div class="payment-content">
+    <div class="order-summary">
+      <h3>Service Summary</h3>
+      <div id="hirePaymentItems"></div>
+      <div class="payment-total">
+        <h3>Total Amount: ₹<span id="hirePaymentTotal">0</span></h3>
+      </div>
+    </div>
+    
+    <div class="payment-methods">
+      <h3>Select Payment Method</h3>
+      <div class="payment-option">
+        <input type="radio" id="hireCard" name="hirePayment" value="card">
+        <label for="hireCard">Credit/Debit Card</label>
+      </div>
+      <div class="payment-option">
+        <input type="radio" id="hireUpi" name="hirePayment" value="upi">
+        <label for="hireUpi">UPI</label>
+      </div>
+      <div class="payment-option">
+        <input type="radio" id="hireCod" name="hirePayment" value="cod" checked>
+        <label for="hireCod">Cash on Delivery</label>
+      </div>
+      
+      <!-- Card Payment Form (Initially Hidden) -->
+      <div class="payment-form" id="hireCardForm">
+        <div class="form-group">
+          <label for="hireCardNumber">Card Number</label>
+          <input type="text" id="hireCardNumber" placeholder="1234 5678 9012 3456">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="hireExpiry">Expiry Date</label>
+            <input type="text" id="hireExpiry" placeholder="MM/YY">
+          </div>
+          <div class="form-group">
+            <label for="hireCvv">CVV</label>
+            <input type="text" id="hireCvv" placeholder="123">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="hireName">Name on Card</label>
+          <input type="text" id="hireName" placeholder="John Doe">
+        </div>
+      </div>
+
+      <!-- UPI Payment Form (Initially Hidden) -->
+      <div class="payment-form" id="hireUpiForm">
+        <div class="form-group">
+          <label for="hireUpiId">UPI ID</label>
+          <input type="text" id="hireUpiId" placeholder="yourname@upi">
+        </div>
+      </div>
+
+      <!-- COD Message (Initially Hidden) -->
+      <div class="payment-message" id="hireCodMessage">
+        <p>Pay when the service is completed. Additional ₹30 service charge may apply.</p>
+      </div>
+    </div>
+    
+    <div class="payment-actions">
+      <button class="btn-pay" onclick="processHirePayment()">Complete Payment</button>
+      <button class="btn-back" onclick="closePanel('hirePaymentPanel'); openPanel('hirePanel');">Back to Hires</button>
+    </div>
+  </div>
+</div>
+
+<!-- Rating Panel -->
+<div class="slide-panel" id="ratingPanel">
+  <button class="close-btn" onclick="closePanel('ratingPanel')">×</button>
+  <h2>Rate Your Experience</h2>
+  <div id="ratingContent"></div>
+</div>
+
+<!-- Payment Panel -->
+<div class="slide-panel" id="paymentPanel">
+  <button class="close-btn" onclick="closePanel('paymentPanel')">×</button>
+  <h2>Payment</h2>
+  <div class="payment-content">
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div id="paymentItems"></div>
+      <div class="payment-total">
+        <h3>Total Amount: ₹<span id="paymentTotal">0</span></h3>
+      </div>
+    </div>
+    
+    <div class="payment-methods">
+      <h3>Select Payment Method</h3>
+      <div class="payment-option">
+        <input type="radio" id="card" name="payment" value="card">
+        <label for="card">Credit/Debit Card</label>
+      </div>
+      <div class="payment-option">
+        <input type="radio" id="upi" name="payment" value="upi">
+        <label for="upi">UPI</label>
+      </div>
+      <div class="payment-option">
+        <input type="radio" id="cod" name="payment" value="cod" checked>
+        <label for="cod">Cash on Delivery</label>
+      </div>
+      
+      <!-- Card Payment Form (Initially Hidden) -->
+      <div class="payment-form" id="cardForm">
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expiry">Expiry Date</label>
+            <input type="text" id="expiry" placeholder="MM/YY">
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Name on Card</label>
+          <input type="text" id="name" placeholder="John Doe">
+        </div>
+      </div>
+
+      <!-- UPI Payment Form (Initially Hidden) -->
+      <div class="payment-form" id="upiForm">
+        <div class="form-group">
+          <label for="upiId">UPI ID</label>
+          <input type="text" id="upiId" placeholder="yourname@upi">
+        </div>
+      </div>
+
+      <!-- COD Message (Initially Hidden) -->
+      <div class="payment-message" id="codMessage">
+        <p>Pay when your order is delivered. Additional ₹30 delivery charge may apply.</p>
+      </div>
+    </div>
+    
+    <div class="payment-actions">
+      <button class="btn-pay" onclick="processPayment()">Complete Order</button>
+      <button class="btn-back" onclick="closePanel('paymentPanel'); openPanel('cartPanel');">Back to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Action Buttons Container -->
+<div class="floating-buttons">
+  <button id="hireBtn" class="floating-button">
+    <div class="icon">👥</div>
+    <span class="label">Hire</span>
+    <div id="hireIndicator" class="cart-indicator" style="display: none;">0</div>
+  </button>
+  
+  <button id="cartBtn" class="floating-button">
+    <div class="icon">🛒</div>
+    <span class="label">Cart</span>
+    <div id="cartIndicator" class="cart-indicator" style="display: none;">0</div>
+  </button>
+  
+  <button id="ordersBtn" class="floating-button">
+    <div class="icon">📦</div>
+    <span class="label">Orders</span>
+    <div id="ordersIndicator" class="cart-indicator" style="display: none;">0</div>
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
