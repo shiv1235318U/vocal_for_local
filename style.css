@@ -32,7 +32,6 @@ body {
   padding: 0 20px;
 }
 
-/* Header */
 header {
   background: var(--primary);
   color: var(--white);
@@ -59,7 +58,6 @@ header {
   gap: 10px;
 }
 
-/* Enhanced Logo Text Animation */
 #logoText {
   transition: all 0.5s ease;
   display: inline-block;
@@ -151,7 +149,6 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* Auth Buttons */
 .auth-buttons {
   display: flex;
   gap: 10px;
@@ -185,7 +182,6 @@ nav a:hover::after {
   border-color: var(--primary-light);
 }
 
-/* User Menu */
 .user-menu {
   position: relative;
   display: flex;
@@ -243,13 +239,10 @@ nav a:hover::after {
   font-size: 1.5rem;
   cursor: pointer;
 }
-
-/* Mobile Auth Links */
 .mobile-auth {
   display: none;
 }
 
-/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
@@ -301,7 +294,6 @@ nav a:hover::after {
   object-fit: cover;
 }
 
-/* Buttons */
 .btn-primary, .btn-secondary, .btn-buy, .btn-hire, .btn-send {
   padding: 12px 25px;
   border: none;
@@ -344,7 +336,6 @@ nav a:hover::after {
   transform: translateY(-2px);
 }
 
-/* Features */
 .features {
   padding: 80px 0;
   background: var(--white);
@@ -385,7 +376,6 @@ nav a:hover::after {
   font-size: 1.3rem;
 }
 
-/* Products & Professions */
 .products, .professions {
   padding: 80px 0;
 }
@@ -512,7 +502,6 @@ nav a:hover::after {
   margin-left: 5px;
 }
 
-/* About Section */
 .about {
   padding: 80px 0;
   background: var(--gray);
@@ -569,7 +558,6 @@ nav a:hover::after {
   object-fit: cover;
 }
 
-/* Contact Section */
 .contact {
   padding: 80px 0;
 }
@@ -629,8 +617,6 @@ nav a:hover::after {
   outline: none;
   border-color: var(--primary);
 }
-
-/* Footer */
 footer {
   background: #222;
   color: var(--white);
@@ -719,7 +705,6 @@ footer {
   border-top: 1px solid #444;
 }
 
-/* Enhanced Slide Panels */
 .slide-panel {
   position: fixed;
   top: 0;
@@ -825,7 +810,6 @@ footer {
   background: var(--primary-dark);
 }
 
-/* Auth Panels */
 .auth-panel {
   z-index: 5002;
 }
@@ -895,7 +879,6 @@ footer {
   text-decoration: underline;
 }
 
-/* Profile Content */
 .profile-content {
   padding: 20px 0;
 }
@@ -928,7 +911,6 @@ footer {
   color: var(--text);
 }
 
-/* Address Form Styles */
 .address-content {
   padding: 20px 0;
 }
@@ -1014,7 +996,6 @@ footer {
   background: var(--gray-dark);
 }
 
-/* Professional Slide Panel Styles */
 .professional-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -1096,7 +1077,6 @@ footer {
   transform: translateY(-2px);
 }
 
-/* Floating Action Buttons - Transform from Horizontal to Vertical */
 .floating-buttons {
   position: fixed;
   bottom: 30px;
@@ -1171,7 +1151,6 @@ footer {
   transform: translateX(-2px);
 }
 
-/* Individual button styles - All Orange Theme */
 #hireBtn {
   background: var(--primary);
   color: var(--white);
@@ -1199,7 +1178,6 @@ footer {
   background: var(--primary-dark);
 }
 
-/* Hover effects */
 .floating-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
@@ -1209,7 +1187,6 @@ footer {
   transform: scale(1) translateY(-2px);
 }
 
-/* Indicators for buttons */
 .cart-indicator {
   position: absolute;
   top: -5px;
@@ -1237,7 +1214,6 @@ footer {
   right: -4px;
 }
 
-/* Cart Panel */
 .cart-panel {
   z-index: 5002;
 }
@@ -1292,7 +1268,6 @@ footer {
   background: #d32f2f;
 }
 
-/* Cart Item Styles */
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -1341,7 +1316,6 @@ footer {
   color: var(--text-light);
 }
 
-/* Payment Styles */
 .payment-content {
   padding: 10px 0;
 }
@@ -1443,7 +1417,6 @@ footer {
   gap: 10px;
 }
 
-/* Hire Panel Styles */
 .hire-panel {
   z-index: 5002;
 }
@@ -1462,7 +1435,6 @@ footer {
   margin-top: 20px;
 }
 
-/* Hire Item Styles */
 .hire-item {
   display: flex;
   justify-content: space-between;
@@ -1536,7 +1508,6 @@ footer {
   color: var(--text-light);
 }
 
-/* Orders Panel Styles */
 .orders-panel {
   z-index: 5002;
 }
@@ -1548,7 +1519,6 @@ footer {
   margin-top: 20px;
 }
 
-/* Order Item Styles */
 .order-item {
   background: var(--white);
   border-radius: var(--radius);
@@ -1674,7 +1644,6 @@ footer {
   color: var(--text-light);
 }
 
-/* Rating Styles */
 .rating-stars {
   display: flex;
   justify-content: center;
@@ -1730,7 +1699,6 @@ footer {
   margin-bottom: 15px;
 }
 
-/* Status Badges */
 .status-badge {
   display: inline-block;
   padding: 4px 8px;
@@ -1755,7 +1723,6 @@ footer {
   color: #f57c00;
 }
 
-/* Professional Status */
 .professional-status {
   margin-top: 10px;
   font-size: 0.9rem;
@@ -1785,7 +1752,6 @@ footer {
   background: var(--primary-dark);
 }
 
-/* Enhanced Notification Styles */
 .notification {
     position: fixed;
     top: 20px;
@@ -1817,7 +1783,6 @@ footer {
     border-left-color: #1976d2;
 }
 
-/* Remove Order Button Styles */
 .btn-remove-order {
     background: #f44336;
     color: white;
@@ -1836,7 +1801,6 @@ footer {
     background: #d32f2f;
 }
 
-/* Clear All Orders Button */
 .clear-all-orders {
     margin-top: 20px;
     padding-top: 20px;
@@ -1864,7 +1828,6 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Enhanced Empty Orders State */
 .empty-orders {
     text-align: center;
     padding: 60px 20px;
@@ -1883,7 +1846,6 @@ footer {
     margin-bottom: 20px;
 }
 
-/* Order Actions Layout */
 .order-actions {
     margin-top: 15px;
     display: flex;
@@ -1891,7 +1853,6 @@ footer {
     flex-wrap: wrap;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .header-container {
     padding: 15px 20px;
@@ -2023,7 +1984,6 @@ footer {
     text-align: center;
   }
   
-  /* Floating buttons for mobile */
   .floating-buttons {
     bottom: 20px;
     right: 20px;
@@ -2058,7 +2018,7 @@ footer {
   }
   
   .floating-button .label {
-    display: none; /* Hide labels on mobile for compact view */
+    display: none; 
   }
 
   .order-actions {
@@ -2071,20 +2031,17 @@ footer {
     justify-content: center;
   }
 
-  /* Notification for mobile */
   .notification {
     right: 10px;
     left: 10px;
     max-width: none;
   }
   
-  /* Address form for mobile */
   .address-actions {
     flex-direction: column;
   }
 }
 
-/* Notification Animations */
 @keyframes slideIn {
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
