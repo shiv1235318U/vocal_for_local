@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atmanirbhar Store | Vocal for Local</title>
+  <title>LocalLink | Vocal for Local</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,7 +12,7 @@
 <header>
   <div class="header-container">
     <div class="logo">
-      <h1><i class="fas fa-hands-helping"></i> <span id="logoText">Atmanirbhar Store</span></h1>
+      <h1><i class="fas fa-hands-helping"></i> <span id="logoText">LocalLink</span></h1>
     </div>
     <nav>
       <ul>
@@ -21,7 +21,6 @@
         <li><a href="#profession">Professions</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <!-- Mobile auth links -->
         <li class="mobile-auth">
           <a href="#" onclick="openPanel('loginPanel')">Login</a>
         </li>
@@ -64,7 +63,7 @@
 
 <section class="features">
   <div class="container">
-    <h2>Why Choose Atmanirbhar Store?</h2>
+    <h2>Why Choose LocalLink?</h2>
     <div class="features-grid">
       <div class="feature">
         <i class="fas fa-hands"></i>
@@ -248,10 +247,10 @@
 
 <section class="about" id="about">
   <div class="container">
-    <h2>About Atmanirbhar Store</h2>
+    <h2>About LocalLink</h2>
     <div class="about-content">
       <div class="about-text">
-        <p>Atmanirbhar Store is an initiative to promote India's local talent and products. We connect you directly to artisans, farmers, and small businesses across the country.</p>
+        <p>LocalLink is an initiative to promote India's local talent and products. We connect you directly to artisans, farmers, and small businesses across the country.</p>
         <p>Every purchase you make supports a self-reliant India and helps preserve traditional crafts and skills that have been passed down through generations.</p>
         <div class="stats">
           <div class="stat">
@@ -318,7 +317,7 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-section">
-        <h3><i class="fas fa-hands-helping"></i> Atmanirbhar Store</h3>
+        <h3><i class="fas fa-hands-helping"></i> LocalLink</h3>
         <p>Supporting local artisans and professionals across India.</p>
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook"></i></a>
@@ -354,12 +353,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Atmanirbhar Store | Made with ❤️ in India</p>
+      <p>© 2025 LocalLink | Made with ❤️ in India</p>
     </div>
   </div>
 </footer>
 
-<!-- Login Panel -->
 <div class="slide-panel auth-panel" id="loginPanel">
   <button class="close-btn" onclick="closePanel('loginPanel')">×</button>
   <h2>Login to Your Account</h2>
@@ -378,8 +376,6 @@
     </div>
   </form>
 </div>
-
-<!-- Register Panel -->
 <div class="slide-panel auth-panel" id="registerPanel">
   <button class="close-btn" onclick="closePanel('registerPanel')">×</button>
   <h2>Create New Account</h2>
@@ -410,35 +406,24 @@
     </div>
   </form>
 </div>
-
-<!-- Profile Panel -->
 <div class="slide-panel auth-panel" id="profilePanel">
   <button class="close-btn" onclick="closePanel('profilePanel')">×</button>
   <h2>Your Profile</h2>
   <div id="profileContent" class="profile-content">
-    <!-- Profile content will be loaded here -->
   </div>
 </div>
-
-<!-- Delivery Address Panel -->
 <div class="slide-panel" id="deliveryAddressPanel">
   <button class="close-btn" onclick="closePanel('deliveryAddressPanel')">×</button>
   <h2>Delivery Address</h2>
   <div id="deliveryAddressContent" class="address-content">
-    <!-- Delivery address form will be loaded here -->
   </div>
 </div>
-
-<!-- Hiring Address Panel -->
 <div class="slide-panel" id="hiringAddressPanel">
   <button class="close-btn" onclick="closePanel('hiringAddressPanel')">×</button>
   <h2>Hiring Address</h2>
   <div id="hiringAddressContent" class="address-content">
-    <!-- Hiring address form will be loaded here -->
   </div>
 </div>
-
-<!-- Slide Panels for Products -->
 <div class="slide-panel" id="slidePottery">
   <button class="close-btn" onclick="closePanel('slidePottery')">×</button>
   <h2>Clay Pottery Collection</h2>
@@ -489,8 +474,6 @@
     <span class="price">₹299</span>
   </div>
 </div>
-
-<!-- Sub-slide Panels for Products -->
 <div class="slide-panel sub-slide" id="vaseModal">
   <button class="close-btn" onclick="closePanel('vaseModal')">×</button>
   <h2>Vase Collection</h2>
@@ -562,8 +545,6 @@
     <button onclick="addToCart({id: 'pickle1', name: 'Mango Pickle (500g)', price: 299})">Add to Cart</button>
   </div>
 </div>
-
-<!-- Professional Sub-slide Panels -->
 <div class="slide-panel sub-slide" id="paintersPanel">
   <button class="close-btn" onclick="closePanel('paintersPanel')">×</button>
   <h2>Available Painters</h2>
@@ -867,7 +848,6 @@
   </div>
 </div>
 
-<!-- Cart Panel -->
 <div class="slide-panel cart-panel" id="cartPanel">
   <button class="close-btn" onclick="closePanel('cartPanel')">×</button>
   <h2>Your Cart</h2>
@@ -882,7 +862,6 @@
   </div>
 </div>
 
-<!-- Hire Panel -->
 <div class="slide-panel hire-panel" id="hirePanel">
   <button class="close-btn" onclick="closePanel('hirePanel')">×</button>
   <h2>Your Hired Professionals</h2>
@@ -897,7 +876,6 @@
   </div>
 </div>
 
-<!-- Orders History Panel -->
 <div class="slide-panel orders-panel" id="ordersPanel">
   <button class="close-btn" onclick="closePanel('ordersPanel')">×</button>
   <h2>Your Order History</h2>
@@ -907,7 +885,6 @@
   </div>
 </div>
 
-<!-- Hire Payment Panel -->
 <div class="slide-panel" id="hirePaymentPanel">
   <button class="close-btn" onclick="closePanel('hirePaymentPanel')">×</button>
   <h2>Payment for Services</h2>
@@ -934,8 +911,6 @@
         <input type="radio" id="hireCod" name="hirePayment" value="cod" checked>
         <label for="hireCod">Cash on Delivery</label>
       </div>
-      
-      <!-- Card Payment Form (Initially Hidden) -->
       <div class="payment-form" id="hireCardForm">
         <div class="form-group">
           <label for="hireCardNumber">Card Number</label>
@@ -956,16 +931,12 @@
           <input type="text" id="hireName" placeholder="John Doe">
         </div>
       </div>
-
-      <!-- UPI Payment Form (Initially Hidden) -->
       <div class="payment-form" id="hireUpiForm">
         <div class="form-group">
           <label for="hireUpiId">UPI ID</label>
           <input type="text" id="hireUpiId" placeholder="yourname@upi">
         </div>
       </div>
-
-      <!-- COD Message (Initially Hidden) -->
       <div class="payment-message" id="hireCodMessage">
         <p>Pay when the service is completed. Additional ₹30 service charge may apply.</p>
       </div>
@@ -978,14 +949,12 @@
   </div>
 </div>
 
-<!-- Rating Panel -->
 <div class="slide-panel" id="ratingPanel">
   <button class="close-btn" onclick="closePanel('ratingPanel')">×</button>
   <h2>Rate Your Experience</h2>
   <div id="ratingContent"></div>
 </div>
 
-<!-- Payment Panel -->
 <div class="slide-panel" id="paymentPanel">
   <button class="close-btn" onclick="closePanel('paymentPanel')">×</button>
   <h2>Payment</h2>
@@ -1013,7 +982,6 @@
         <label for="cod">Cash on Delivery</label>
       </div>
       
-      <!-- Card Payment Form (Initially Hidden) -->
       <div class="payment-form" id="cardForm">
         <div class="form-group">
           <label for="cardNumber">Card Number</label>
@@ -1035,15 +1003,12 @@
         </div>
       </div>
 
-      <!-- UPI Payment Form (Initially Hidden) -->
       <div class="payment-form" id="upiForm">
         <div class="form-group">
           <label for="upiId">UPI ID</label>
           <input type="text" id="upiId" placeholder="yourname@upi">
         </div>
       </div>
-
-      <!-- COD Message (Initially Hidden) -->
       <div class="payment-message" id="codMessage">
         <p>Pay when your order is delivered. Additional ₹30 delivery charge may apply.</p>
       </div>
@@ -1055,8 +1020,6 @@
     </div>
   </div>
 </div>
-
-<!-- Floating Action Buttons Container -->
 <div class="floating-buttons">
   <button id="hireBtn" class="floating-button">
     <div class="icon">👥</div>
