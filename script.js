@@ -1,20 +1,11 @@
-// Cart Data
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Hire Data
 let hires = JSON.parse(localStorage.getItem('hires')) || [];
-
-// Orders Data
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
-
-// Track viewed states
 let viewedStates = JSON.parse(localStorage.getItem('viewedStates')) || {
     cartViewed: true,
     hiresViewed: true,
     ordersViewed: true
 };
-
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
@@ -27,19 +18,14 @@ function initializeApp() {
     setupPaymentListeners();
     setupHirePaymentListeners();
     updateNotificationIndicators();
-    checkAuthState(); // Check if user is logged in
+    checkAuthState(); 
 }
-
-// Check if user is logged in
 function isUserLoggedIn() {
     return localStorage.getItem('currentUser') !== null;
 }
-
-// Redirect to login/register with callback
 function requireAuth(action, callback) {
     if (!isUserLoggedIn()) {
         showNotification(`Please login or register to ${action}`, 'error');
-        // Store the intended action for after login
         localStorage.setItem('pendingAction', JSON.stringify({
             action: action,
             callback: callback.toString()
@@ -50,40 +36,32 @@ function requireAuth(action, callback) {
     return true;
 }
 
-// Setup all event listeners
 function setupEventListeners() {
-    // Explore button
     document.getElementById('exploreBtn').addEventListener('click', function() {
         document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Explore professions button
     document.getElementById('exploreProfessions').addEventListener('click', function() {
         document.getElementById('profession').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Cart button
     document.getElementById('cartBtn').addEventListener('click', function() {
         openPanel('cartPanel');
         collapseFloatingButtons();
         markAsViewed('cart');
     });
 
-    // Hire button
     document.getElementById('hireBtn').addEventListener('click', function() {
         openPanel('hirePanel');
         collapseFloatingButtons();
         markAsViewed('hires');
     });
-
-    // Orders button
     document.getElementById('ordersBtn').addEventListener('click', function() {
         openPanel('ordersPanel');
         collapseFloatingButtons();
         markAsViewed('orders');
     });
 
-    // Auth buttons
     document.getElementById('loginBtn').addEventListener('click', function() {
         openPanel('loginPanel');
         collapseFloatingButtons();
@@ -105,7 +83,6 @@ function setupEventListeners() {
         logout();
     });
 
-    // Auth forms
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
         login();
@@ -115,12 +92,9 @@ function setupEventListeners() {
         e.preventDefault();
         register();
     });
-
-    // Contact form - Formspree integration with AJAX
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Check if user is logged in
         if (!requireAuth('send messages', function() {
             document.getElementById('contactForm').dispatchEvent(new Event('submit'));
         })) {
@@ -131,8 +105,6 @@ function setupEventListeners() {
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        
-        // Use AJAX to submit to Formspree
         const formData = new FormData(this);
         
         fetch('https://formspree.io/f/mblzpnqp', {
@@ -159,13 +131,10 @@ function setupEventListeners() {
         });
     });
 
-    // Mobile menu
     document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
         const nav = document.querySelector('nav ul');
         nav.classList.toggle('show');
     });
-
-    // Buy Now buttons for main products
     document.querySelectorAll('.btn-buy').forEach(button => {
         button.addEventListener('click', function() {
             const panelId = this.getAttribute('data-panel');
@@ -175,8 +144,6 @@ function setupEventListeners() {
             }
         });
     });
-
-    // Product overlay buttons
     document.querySelectorAll('.btn-overlay').forEach(button => {
         button.addEventListener('click', function() {
             const panelId = this.getAttribute('data-panel');
@@ -186,8 +153,6 @@ function setupEventListeners() {
             }
         });
     });
-
-    // Product items in slide panels
     document.querySelectorAll('.product-item[data-subslide]').forEach(item => {
         item.addEventListener('click', function() {
             const subslideId = this.getAttribute('data-subslide');
@@ -197,8 +162,6 @@ function setupEventListeners() {
             }
         });
     });
-
-    // Hire buttons for professions
     document.querySelectorAll('.btn-hire').forEach(button => {
         button.addEventListener('click', function() {
             const panelId = this.getAttribute('data-panel');
@@ -208,8 +171,6 @@ function setupEventListeners() {
             }
         });
     });
-
-    // Close buttons
     document.querySelectorAll('.close-btn').forEach(button => {
         button.addEventListener('click', function() {
             const panel = this.closest('.slide-panel');
@@ -218,15 +179,11 @@ function setupEventListeners() {
             }
         });
     });
-
-    // Close panels when clicking outside
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('slide-panel')) {
             closePanel(e.target.id);
         }
     });
-
-    // Use event delegation for dynamically created rate buttons
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn-rate') || e.target.closest('.btn-rate')) {
             const button = e.target.classList.contains('btn-rate') ? e.target : e.target.closest('.btn-rate');
@@ -237,8 +194,6 @@ function setupEventListeners() {
         }
     });
 }
-
-// Address functions - Auto-sync between delivery and hiring addresses
 function saveUserAddress(address, addressType = 'delivery') {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     if (user) {
@@ -246,8 +201,6 @@ function saveUserAddress(address, addressType = 'delivery') {
             user.addresses = {};
         }
         user.addresses[addressType] = address;
-        
-        // AUTO-SYNC: If saving delivery address, also save as hiring address and vice versa
         if (addressType === 'delivery') {
             user.addresses.hiring = address;
         } else if (addressType === 'hiring') {
@@ -267,7 +220,6 @@ function getUserAddress(addressType = 'delivery') {
 function showDeliveryAddressForm(callback) {
     const existingAddress = getUserAddress('delivery');
     
-    // ALWAYS show address selection, even if address exists
     const addressContent = `
         <div class="address-selection">
             <h3>Choose Delivery Address</h3>
@@ -318,13 +270,11 @@ function selectAddressOption(addressType, option) {
 
 function processDeliveryAddressSelection() {
     if (window.selectedDeliveryAddressOption === 'existing') {
-        // Use existing address directly
         closePanel('deliveryAddressPanel');
         if (typeof window.deliveryAddressCallback === 'function') {
             window.deliveryAddressCallback();
         }
     } else {
-        // Show form for new address
         showNewDeliveryAddressForm();
     }
 }
@@ -349,7 +299,7 @@ function showNewDeliveryAddressForm() {
                 <input type="text" id="deliveryLine1" placeholder="House/Flat No., Building Name" value="" required>
             </div>
             <div class="form-group">
-                <label for="deliveryLine2">Address Line 2</label>
+                <label for="deliveryLine2">Address Line 2 (Optional)</label>
                 <input type="text" id="deliveryLine2" placeholder="Street Name, Area" value="">
             </div>
             <div class="form-row">
@@ -403,31 +353,23 @@ function saveNewDeliveryAddress() {
         type: document.getElementById('deliveryType').value
     };
     
-    // Validate required fields
     if (!address.fullName || !address.phone || !address.line1 || !address.city || !address.state || !address.pincode) {
         showNotification('Please fill all required fields', 'error');
         return;
     }
-    
-    // Validate phone number
     if (address.phone.length !== 10 || !/^\d+$/.test(address.phone)) {
         showNotification('Please enter a valid 10-digit phone number', 'error');
         return;
     }
-    
-    // Validate pincode
     if (address.pincode.length !== 6 || !/^\d+$/.test(address.pincode)) {
         showNotification('Please enter a valid 6-digit pincode', 'error');
         return;
     }
-    
-    // Save the new address as BOTH delivery and hiring addresses (AUTO-SYNC)
     saveUserAddress(address, 'delivery');
     showNotification('New address saved successfully for both deliveries and service bookings!', 'success');
     
     closePanel('deliveryAddressPanel');
     
-    // Execute the callback function (proceed to payment)
     if (typeof window.deliveryAddressCallback === 'function') {
         window.deliveryAddressCallback();
     }
@@ -436,7 +378,6 @@ function saveNewDeliveryAddress() {
 function showHiringAddressForm(callback) {
     const existingAddress = getUserAddress('hiring');
     
-    // ALWAYS show address selection, even if address exists
     const addressContent = `
         <div class="address-selection">
             <h3>Choose Service Address</h3>
@@ -475,13 +416,11 @@ function showHiringAddressForm(callback) {
 
 function processHiringAddressSelection() {
     if (window.selectedHiringAddressOption === 'existing') {
-        // Use existing address directly
         closePanel('hiringAddressPanel');
         if (typeof window.hiringAddressCallback === 'function') {
             window.hiringAddressCallback();
         }
     } else {
-        // Show form for new address
         showNewHiringAddressForm();
     }
 }
@@ -559,45 +498,32 @@ function saveNewHiringAddress() {
         landmark: document.getElementById('hiringLandmark').value,
         type: document.getElementById('hiringType').value
     };
-    
-    // Validate required fields
     if (!address.fullName || !address.phone || !address.line1 || !address.city || !address.state || !address.pincode) {
         showNotification('Please fill all required fields', 'error');
         return;
     }
     
-    // Validate phone number
     if (address.phone.length !== 10 || !/^\d+$/.test(address.phone)) {
         showNotification('Please enter a valid 10-digit phone number', 'error');
         return;
     }
-    
-    // Validate pincode
     if (address.pincode.length !== 6 || !/^\d+$/.test(address.pincode)) {
         showNotification('Please enter a valid 6-digit pincode', 'error');
         return;
     }
-    
-    // Save the new address as BOTH hiring and delivery addresses (AUTO-SYNC)
     saveUserAddress(address, 'hiring');
     showNotification('New address saved successfully for both service bookings and deliveries!', 'success');
     
     closePanel('hiringAddressPanel');
-    
-    // Execute the callback function (proceed to payment)
     if (typeof window.hiringAddressCallback === 'function') {
         window.hiringAddressCallback();
     }
 }
-
-// Auth functions
 function checkAuthState() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     if (user) {
         showUserMenu(user);
         showWelcomeMessage();
-        
-        // Check if there's a pending action after login
         const pendingAction = localStorage.getItem('pendingAction');
         if (pendingAction) {
             try {
@@ -617,8 +543,6 @@ function showUserMenu(user) {
     document.getElementById('loginBtn').style.display = 'none';
     document.getElementById('registerBtn').style.display = 'none';
     document.getElementById('userMenu').style.display = 'flex';
-    
-    // Capitalize first letter of name
     const capitalizedName = user.name.split(' ')[0].charAt(0).toUpperCase() + 
                            user.name.split(' ')[0].slice(1).toLowerCase();
     
@@ -637,16 +561,10 @@ function showWelcomeMessage() {
         const logo = document.querySelector('.logo');
         const logoText = document.getElementById('logoText');
         const originalContent = logoText.textContent;
-        
-        // Capitalize first letter of name
         const capitalizedName = user.name.split(' ')[0].charAt(0).toUpperCase() + 
                                user.name.split(' ')[0].slice(1).toLowerCase();
-        
-        // Change to welcome message
         logoText.textContent = `Welcome, ${capitalizedName}`;
         logo.classList.add('welcome-mode');
-        
-        // Revert back after 5 seconds with smooth transition
         setTimeout(() => {
             logo.classList.remove('welcome-mode');
             logo.classList.add('final-mode');
@@ -654,34 +572,23 @@ function showWelcomeMessage() {
                 logoText.textContent = originalContent;
                 logo.classList.remove('final-mode');
             }, 500);
-        }, 5000); // 5 seconds for the welcome animation
+        }, 5000); 
     }
 }
 
 function login() {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
-    
-    // Get users from localStorage
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const user = users.find(u => u.email === email && u.password === password);
     
     if (user) {
-        // Store current user in localStorage
         localStorage.setItem('currentUser', JSON.stringify(user));
-        
-        // Update UI
         showUserMenu(user);
         closePanel('loginPanel');
         showNotification(`Welcome back, ${user.name.split(' ')[0]}!`, 'success');
-        
-        // Show welcome message
         showWelcomeMessage();
-        
-        // Clear form
         document.getElementById('loginForm').reset();
-        
-        // Check for pending actions
         checkAuthState();
     } else {
         showNotification('Invalid email or password. Please try again.', 'error');
@@ -695,7 +602,6 @@ function register() {
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
     
-    // Validation
     if (password !== confirmPassword) {
         showNotification('Passwords do not match!', 'error');
         return;
@@ -705,17 +611,11 @@ function register() {
         showNotification('Password must be at least 6 characters long!', 'error');
         return;
     }
-    
-    // Get existing users
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    
-    // Check if user already exists
     if (users.find(u => u.email === email)) {
         showNotification('User with this email already exists!', 'error');
         return;
     }
-    
-    // Create new user
     const newUser = {
         id: 'user_' + Date.now(),
         name: name,
@@ -726,29 +626,17 @@ function register() {
         orders: [],
         hires: []
     };
-    
-    // Save user
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     localStorage.setItem('currentUser', JSON.stringify(newUser));
-    
-    // Update UI
     showUserMenu(newUser);
     closePanel('registerPanel');
-    
-    // Capitalize first letter for welcome message
     const capitalizedName = name.split(' ')[0].charAt(0).toUpperCase() + 
                            name.split(' ')[0].slice(1).toLowerCase();
     
     showNotification(`Account created successfully! Welcome to Atmanirbhar Store, ${capitalizedName}!`, 'success');
-    
-    // Show welcome message
     showWelcomeMessage();
-    
-    // Clear form
     document.getElementById('registerForm').reset();
-    
-    // Check for pending actions
     checkAuthState();
 }
 
@@ -756,8 +644,6 @@ function logout() {
     localStorage.removeItem('currentUser');
     showAuthButtons();
     showNotification('You have been logged out successfully.', 'success');
-    
-    // Close all panels
     closeAllPanels();
 }
 
@@ -834,8 +720,6 @@ function openProfilePanel() {
     
     openPanel('profilePanel');
 }
-
-// Mark panel as viewed and hide notification
 function markAsViewed(panelType) {
     switch(panelType) {
         case 'cart':
@@ -851,8 +735,6 @@ function markAsViewed(panelType) {
     localStorage.setItem('viewedStates', JSON.stringify(viewedStates));
     updateNotificationIndicators();
 }
-
-// Reset notifications when new items are added
 function resetNotifications(panelType) {
     switch(panelType) {
         case 'cart':
@@ -868,14 +750,10 @@ function resetNotifications(panelType) {
     localStorage.setItem('viewedStates', JSON.stringify(viewedStates));
     updateNotificationIndicators();
 }
-
-// Update notification indicators based on viewed state and item count
 function updateNotificationIndicators() {
     const cartCount = document.getElementById('cartIndicator');
     const hireCount = document.getElementById('hireIndicator');
     const ordersCount = document.getElementById('ordersIndicator');
-
-    // Cart notification
     const totalCartItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     if (cartCount) {
         if (totalCartItems > 0 && !viewedStates.cartViewed) {
@@ -885,8 +763,6 @@ function updateNotificationIndicators() {
             cartCount.style.display = 'none';
         }
     }
-
-    // Hire notification
     const totalHires = hires.reduce((sum, hire) => sum + hire.days, 0);
     if (hireCount) {
         if (totalHires > 0 && !viewedStates.hiresViewed) {
@@ -896,8 +772,6 @@ function updateNotificationIndicators() {
             hireCount.style.display = 'none';
         }
     }
-
-    // Orders notification
     if (ordersCount) {
         if (orders.length > 0 && !viewedStates.ordersViewed) {
             ordersCount.textContent = orders.length;
@@ -907,8 +781,6 @@ function updateNotificationIndicators() {
         }
     }
 }
-
-// Setup payment method listeners
 function setupPaymentListeners() {
     const paymentMethods = document.querySelectorAll('input[name="payment"]');
     
@@ -918,8 +790,6 @@ function setupPaymentListeners() {
         });
     });
 }
-
-// Setup hire payment method listeners
 function setupHirePaymentListeners() {
     const paymentMethods = document.querySelectorAll('input[name="hirePayment"]');
     
@@ -929,15 +799,10 @@ function setupHirePaymentListeners() {
         });
     });
 }
-
-// Update payment form based on selected method
 function updatePaymentForm(method) {
-    // Hide all forms first
     document.getElementById('cardForm').style.display = 'none';
     document.getElementById('upiForm').style.display = 'none';
     document.getElementById('codMessage').style.display = 'none';
-    
-    // Show relevant form based on selected method
     switch(method) {
         case 'card':
             document.getElementById('cardForm').style.display = 'block';
@@ -950,15 +815,11 @@ function updatePaymentForm(method) {
             break;
     }
 }
-
-// Update hire payment form based on selected method
 function updateHirePaymentForm(method) {
-    // Hide all forms first
     document.getElementById('hireCardForm').style.display = 'none';
     document.getElementById('hireUpiForm').style.display = 'none';
     document.getElementById('hireCodMessage').style.display = 'none';
     
-    // Show relevant form based on selected method
     switch(method) {
         case 'card':
             document.getElementById('hireCardForm').style.display = 'block';
@@ -971,8 +832,6 @@ function updateHirePaymentForm(method) {
             break;
     }
 }
-
-// Floating buttons collapse/expand functions
 function collapseFloatingButtons() {
     const floatingButtons = document.querySelector('.floating-buttons');
     floatingButtons.classList.add('collapsed');
@@ -982,10 +841,7 @@ function expandFloatingButtons() {
     const floatingButtons = document.querySelector('.floating-buttons');
     floatingButtons.classList.remove('collapsed');
 }
-
-// Panel functions
 function openPanel(panelId) {
-    // Close all panels first
     closeAllPanels();
     
     const panel = document.getElementById(panelId);
@@ -1001,7 +857,6 @@ function closePanel(panelId) {
     if (panel) {
         panel.classList.remove('open');
         
-        // Check if all panels are closed
         const openPanels = document.querySelectorAll('.slide-panel.open');
         if (openPanels.length === 0) {
             document.body.style.overflow = 'auto';
@@ -1018,16 +873,12 @@ function closeAllPanels() {
     expandFloatingButtons();
 }
 
-// Cart functions
 function addToCart(product) {
-    // Check if user is logged in
     if (!requireAuth('add items to cart', function() {
         addToCart(product);
     })) {
         return;
     }
-    
-    // Check if product already exists in cart
     const existingItem = cart.find(item => item.id === product.id);
     
     if (existingItem) {
@@ -1040,18 +891,10 @@ function addToCart(product) {
             quantity: 1
         });
     }
-    
-    // Update storage and UI
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
-    
-    // Reset notification for cart
     resetNotifications('cart');
-    
-    // Show notification
     showNotification(`${product.name} added to cart!`, 'success');
-    
-    // Close current sub-slide panel
     const currentSubSlide = document.querySelector('.sub-slide.open');
     if (currentSubSlide) {
         closePanel(currentSubSlide.id);
@@ -1090,15 +933,12 @@ function clearCart() {
 function updateCartUI() {
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
-
-    // Update cart items
     if (cartItems) {
         cartItems.innerHTML = '';
         
         if (cart.length === 0) {
             cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
             if (cartTotal) cartTotal.textContent = '0';
-            // Mark as viewed when cart is empty
             viewedStates.cartViewed = true;
             localStorage.setItem('viewedStates', JSON.stringify(viewedStates));
             updateNotificationIndicators();
@@ -1138,16 +978,12 @@ function updateCartUI() {
     updateNotificationIndicators();
 }
 
-// Hire functions
 function hireProfessional(professional) {
-    // Check if user is logged in
     if (!requireAuth('hire professionals', function() {
         hireProfessional(professional);
     })) {
         return;
     }
-    
-    // Check if professional already exists in hires
     const existingHire = hires.find(hire => hire.id === professional.id);
     
     if (existingHire) {
@@ -1161,22 +997,14 @@ function hireProfessional(professional) {
             days: 1,
             phone: professional.phone,
             image: professional.image,
-            status: 'hired', // hired, completed, rated
+            status: 'hired', 
             userRating: 0
         });
     }
-    
-    // Update storage and UI
     localStorage.setItem('hires', JSON.stringify(hires));
     updateHireUI();
-    
-    // Reset notification for hires
     resetNotifications('hires');
-    
-    // Show notification
     showNotification(`${professional.name} hired successfully!`, 'success');
-    
-    // Close current sub-slide panel
     const currentSubSlide = document.querySelector('.sub-slide.open');
     if (currentSubSlide) {
         closePanel(currentSubSlide.id);
@@ -1216,14 +1044,12 @@ function updateHireUI() {
     const hireItems = document.getElementById('hireItems');
     const hireTotal = document.getElementById('hireTotal');
 
-    // Update hire items
     if (hireItems) {
         hireItems.innerHTML = '';
         
         if (hires.length === 0) {
             hireItems.innerHTML = '<p class="empty-hire">You haven\'t hired any professionals yet</p>';
             if (hireTotal) hireTotal.textContent = '0';
-            // Mark as viewed when no hires
             viewedStates.hiresViewed = true;
             localStorage.setItem('viewedStates', JSON.stringify(viewedStates));
             updateNotificationIndicators();
@@ -1238,8 +1064,6 @@ function updateHireUI() {
             
             const hireItem = document.createElement('div');
             hireItem.className = 'hire-item';
-            
-            // Status badge
             let statusBadge = '';
             if (hire.status === 'completed') {
                 statusBadge = '<span class="status-badge status-completed">Completed</span>';
@@ -1282,24 +1106,21 @@ function updateHireUI() {
     
     updateNotificationIndicators();
 }
-
-// Orders functions
 function addToOrders(orderData) {
     const order = {
         id: 'ORD' + Date.now().toString().slice(-6),
         date: new Date().toLocaleDateString('en-IN'),
         items: orderData.items,
         total: orderData.total,
-        status: 'pending', // pending, shipped, delivered, cancelled
+        status: 'pending', 
         address: orderData.address,
-        type: orderData.type || 'product' // product or service
+        type: orderData.type || 'product' 
     };
     
-    orders.unshift(order); // Add to beginning of array
+    orders.unshift(order); 
     localStorage.setItem('orders', JSON.stringify(orders));
     updateOrdersUI();
     
-    // Reset notification for orders
     resetNotifications('orders');
     
     return order.id;
@@ -1321,7 +1142,6 @@ function removeOrder(orderId) {
     updateOrdersUI();
     showNotification(`Order #${orderId} has been removed from your history!`, 'success');
     
-    // If no orders left, close the orders panel
     if (orders.length === 0) {
         setTimeout(() => {
             closePanel('ordersPanel');
@@ -1339,8 +1159,6 @@ function clearOrderHistory() {
 
 function updateOrdersUI() {
     const ordersItems = document.getElementById('ordersItems');
-
-    // Update orders items
     if (ordersItems) {
         ordersItems.innerHTML = '';
         
@@ -1352,7 +1170,6 @@ function updateOrdersUI() {
                     <button class="btn-continue" onclick="closePanel('ordersPanel')">Start Shopping</button>
                 </div>
             `;
-            // Mark as viewed when no orders
             viewedStates.ordersViewed = true;
             localStorage.setItem('viewedStates', JSON.stringify(viewedStates));
             updateNotificationIndicators();
@@ -1423,7 +1240,6 @@ function updateOrdersUI() {
             ordersItems.appendChild(orderItem);
         });
 
-        // Add clear all button if there are orders
         const clearAllButton = document.createElement('div');
         clearAllButton.className = 'clear-all-orders';
         clearAllButton.innerHTML = `
@@ -1437,9 +1253,7 @@ function updateOrdersUI() {
     updateNotificationIndicators();
 }
 
-// Professional contact function
 function contactProfessional(name, phone) {
-    // Check if user is logged in
     if (!requireAuth('contact professionals', function() {
         contactProfessional(name, phone);
     })) {
@@ -1447,32 +1261,26 @@ function contactProfessional(name, phone) {
     }
     
     showNotification(`Contacting ${name} at ${phone}...`, 'info');
-    // In a real application, this would initiate a call or open a chat
     setTimeout(() => {
         showNotification(`${name} has been notified and will contact you shortly!`, 'success');
     }, 1500);
 }
 
-// Payment functions
 function proceedToPayment() {
     if (cart.length === 0) {
         showNotification('Your cart is empty!', 'error');
         return;
     }
     
-    // Check if user is logged in
     if (!requireAuth('place orders', function() {
         proceedToPayment();
     })) {
         return;
     }
-    
-    // ALWAYS show address selection, never auto-use
     showDeliveryAddressForm(proceedToPaymentAfterAddress);
 }
 
 function proceedToPaymentAfterAddress() {
-    // Update payment items
     const paymentItems = document.getElementById('paymentItems');
     const paymentTotal = document.getElementById('paymentTotal');
     
@@ -1499,20 +1307,15 @@ function proceedToPaymentAfterAddress() {
         
         if (paymentTotal) paymentTotal.textContent = total;
     }
-    
-    // Reset payment method to COD by default
     document.getElementById('cod').checked = true;
     updatePaymentForm('cod');
     
-    // Open payment panel
     closePanel('cartPanel');
     openPanel('paymentPanel');
 }
 
 function processPayment() {
     const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
-    
-    // Validate based on payment method
     let isValid = true;
     let message = '';
     
@@ -1544,7 +1347,6 @@ function processPayment() {
             break;
             
         case 'cod':
-            // No validation needed for COD
             isValid = true;
             break;
     }
@@ -1554,14 +1356,10 @@ function processPayment() {
         return;
     }
     
-    // Simulate payment processing
     showNotification('Processing your order...', 'info');
     
     setTimeout(() => {
-        // Get user delivery address
         const deliveryAddress = getUserAddress('delivery');
-        
-        // Add to orders
         const orderId = addToOrders({
             items: [...cart],
             total: document.getElementById('paymentTotal').textContent,
@@ -1569,57 +1367,39 @@ function processPayment() {
             type: 'product'
         });
         
-        // Clear cart after successful order
         cart = [];
         localStorage.removeItem('cart');
         updateCartUI();
-        
-        // Close payment panel
         closePanel('paymentPanel');
-        
-        // Show success message with order number
         showNotification(`Order successful! Your order number is ${orderId}. Thank you!`, 'success');
-        
-        // Reset all forms
         resetPaymentForms();
     }, 2000);
 }
 
 function resetPaymentForms() {
-    // Reset card form
     document.getElementById('cardNumber').value = '';
     document.getElementById('expiry').value = '';
     document.getElementById('cvv').value = '';
     document.getElementById('name').value = '';
-    
-    // Reset UPI form
     document.getElementById('upiId').value = '';
-    
-    // Reset to COD
     document.getElementById('cod').checked = true;
     updatePaymentForm('cod');
 }
 
-// Hire payment functions - FIXED: No longer adds to orders
 function proceedToHirePayment() {
     if (hires.length === 0) {
         showNotification('You haven\'t hired any professionals!', 'error');
         return;
     }
-    
-    // Check if user is logged in
     if (!requireAuth('pay for services', function() {
         proceedToHirePayment();
     })) {
         return;
     }
-    
-    // ALWAYS show address selection, never auto-use
     showHiringAddressForm(proceedToHirePaymentAfterAddress);
 }
 
 function proceedToHirePaymentAfterAddress() {
-    // Update payment items
     const paymentItems = document.getElementById('hirePaymentItems');
     const paymentTotal = document.getElementById('hirePaymentTotal');
     
@@ -1651,20 +1431,14 @@ function proceedToHirePaymentAfterAddress() {
         
         if (paymentTotal) paymentTotal.textContent = total;
     }
-    
-    // Reset payment method to COD by default
     document.getElementById('hireCod').checked = true;
     updateHirePaymentForm('cod');
-    
-    // Open payment panel
     closePanel('hirePanel');
     openPanel('hirePaymentPanel');
 }
 
 function processHirePayment() {
     const selectedPayment = document.querySelector('input[name="hirePayment"]:checked').value;
-    
-    // Validate based on payment method
     let isValid = true;
     let message = '';
     
@@ -1696,7 +1470,6 @@ function processHirePayment() {
             break;
             
         case 'cod':
-            // No validation needed for COD
             isValid = true;
             break;
     }
@@ -1705,12 +1478,9 @@ function processHirePayment() {
         showNotification(message, 'error');
         return;
     }
-    
-    // Simulate payment processing
     showNotification('Processing your payment...', 'info');
     
     setTimeout(() => {
-        // Update hire status to completed (but don't add to orders)
         hires.forEach(hire => {
             hire.status = 'completed';
         });
@@ -1719,34 +1489,21 @@ function processHirePayment() {
         updateHireUI();
         
         const paymentNumber = 'PAY' + Date.now().toString().slice(-6);
-        
-        // Close payment panel
         closePanel('hirePaymentPanel');
-        
-        // Show success message with payment number
         showNotification(`Payment successful! Your payment ID is ${paymentNumber}. Professionals have been notified and will contact you shortly.`, 'success');
-        
-        // Reset all forms
         resetHirePaymentForms();
     }, 2000);
 }
 
 function resetHirePaymentForms() {
-    // Reset card form
     document.getElementById('hireCardNumber').value = '';
     document.getElementById('hireExpiry').value = '';
     document.getElementById('hireCvv').value = '';
     document.getElementById('hireName').value = '';
-    
-    // Reset UPI form
     document.getElementById('hireUpiId').value = '';
-    
-    // Reset to COD
     document.getElementById('hireCod').checked = true;
     updateHirePaymentForm('cod');
 }
-
-// Rating functions
 function openRatingPanel(professionalId) {
     const professional = hires.find(hire => hire.id === professionalId);
     if (!professional) {
@@ -1786,7 +1543,6 @@ function openRatingPanel(professionalId) {
         </div>
     `;
     
-    // Add star rating interaction
     const stars = document.querySelectorAll('#ratingStars i');
     stars.forEach(star => {
         star.addEventListener('click', function() {
@@ -1798,7 +1554,6 @@ function openRatingPanel(professionalId) {
                     s.className = 'far fa-star';
                 }
             });
-            // Store rating in temporary variable
             document.getElementById('ratingStars').setAttribute('data-current-rating', rating);
         });
     });
@@ -1827,16 +1582,12 @@ function submitRating(professionalId) {
         showNotification('Please select a rating', 'error');
         return;
     }
-    
-    // Update professional with rating
     professional.userRating = rating;
     professional.status = 'rated';
     professional.userComment = comment;
     
     localStorage.setItem('hires', JSON.stringify(hires));
     updateHireUI();
-    
-    // Show success message
     const ratingContent = document.getElementById('ratingContent');
     if (ratingContent) {
         ratingContent.innerHTML = `
@@ -1851,17 +1602,12 @@ function submitRating(professionalId) {
     
     showNotification('Rating submitted successfully!', 'success');
 }
-
-// Enhanced Notification function
 function showNotification(message, type = 'success') {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
     
     document.body.appendChild(notification);
-    
-    // Remove after 3 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => {
@@ -1871,8 +1617,6 @@ function showNotification(message, type = 'success') {
         }, 300);
     }, 3000);
 }
-
-// Initialize cart, hire, and orders UI on load
 updateCartUI();
 updateHireUI();
 updateOrdersUI();
